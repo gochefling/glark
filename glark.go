@@ -168,10 +168,9 @@ func glark(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespons
 		return events.APIGatewayProxyResponse{Body: err.Error(), StatusCode: 404}, err
 	}
 
-	var groupSlice []Groups
 	//Need to search "chat_id" in LarkData for the ChatID supplied by env
-	for i := range groupSlice {
-		if groupSlice[i].Name == ChatName {
+	for i := range larkData.Data.Groups {
+		if larkData.Data.Groups[i].Name == ChatName {
 			//Group found
 			chatID = larkData.Data.Groups[i].ChatID
 		}
